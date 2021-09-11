@@ -1,20 +1,13 @@
 package org.example;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -23,7 +16,10 @@ public class App extends Application {
     private static Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary") , 1366 , 768);
+        int width = (int) Screen.getPrimary().getVisualBounds().getWidth();
+        int height = (int) Screen.getPrimary().getVisualBounds().getHeight();
+
+        scene = new Scene(loadFXML("FXML/primary") , width , height);
         scene.getStylesheets().add(App.class.getResource("application.css").toString());
         scene.setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);
